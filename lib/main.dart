@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 
 void main() {
   runApp(MyApp());
@@ -65,26 +66,60 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             scanResult == ''
-                ? Text("Tampil Hasil Scan")
-                : RaisedButton(
-                    child: Text(
-                      'Click To $scanResult',
-                      style: TextStyle(color: Colors.blue),
+                ? AvatarGlow(
+                    glowColor: Colors.blue,
+                    endRadius: 150.0,
+                    duration: Duration(milliseconds: 2000),
+                    repeat: true,
+                    showTwoGlows: true,
+                    repeatPauseDuration: Duration(milliseconds: 100),
+                    child: Material(
+                      elevation: 8.0,
+                      shape: CircleBorder(),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.blue[10],
+                        child: FloatingActionButton(
+                          child: Icon(Icons.add_a_photo),
+                          backgroundColor: Colors.blue[10],
+                          onPressed: scanQRSecond,
+                        ),
+                        radius: 50.0,
+                      ),
                     ),
-                    onPressed: () => launchUrl(scanResult),
+                  )
+                : AvatarGlow(
+                    glowColor: Colors.green,
+                    endRadius: 150.0,
+                    duration: Duration(milliseconds: 2000),
+                    repeat: true,
+                    showTwoGlows: true,
+                    repeatPauseDuration: Duration(milliseconds: 100),
+                    child: Material(
+                      elevation: 8.0,
+                      shape: CircleBorder(),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.greenAccent[100],
+                        child: FloatingActionButton(
+                          child: Icon(Icons.link),
+                          backgroundColor: Colors.greenAccent[100],
+                          onPressed: () => launchUrl(scanResult),
+                        ),
+                        radius: 50.0,
+                      ),
+                    ),
                   ),
             SizedBox(
               height: 20,
             ),
-            RaisedButton(
-              child: Text(
-                'Click To Scan',
-                style: TextStyle(color: Colors.blue),
-              ),
-              onPressed: scanQRSecond,
-            )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        child: Icon(Icons.create_new_folder),
+        backgroundColor: Colors.blueAccent,
       ),
     );
   }
