@@ -27,10 +27,10 @@ class _HomeDetailState extends State<HomeDetail> {
     });
   }
 
-  void initState() {
-    scanQR();
-    super.initState();
-  }
+  // void initState() {
+  //   scanQR();
+  //   super.initState();
+  // }
 
   Future scanQRSecond() async {
     String cameraScan = await scanner.scan();
@@ -50,6 +50,16 @@ class _HomeDetailState extends State<HomeDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Produk()),
+          );
+        },
+        child: Icon(Icons.create_new_folder),
+        backgroundColor: Colors.blueAccent,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -92,14 +102,6 @@ class _HomeDetailState extends State<HomeDetail> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Produk()));
-        },
-        child: Icon(Icons.create_new_folder),
-        backgroundColor: Colors.blueAccent,
       ),
     );
   }

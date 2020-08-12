@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qrcode/Akses/Service/listService.dart';
 import 'package:qrcode/Akses/Service/produkService.dart';
 import 'package:qrcode/Home/home.dart';
+import 'package:qrcode/Produk/produk.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,12 +17,16 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ProdukService>(
           create: (_) => ProdukService(),
         ),
+        ChangeNotifierProvider<ListService>(
+          create: (_) => ListService(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
           '/': (context) => Home(),
+          '/produk': (context) => Produk(),
         },
       ),
     );
