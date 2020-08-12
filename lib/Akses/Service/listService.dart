@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:qrcode/Akses/Model/listModel.dart';
-import 'package:http/http.dart' show Client;
 import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' show Client;
+import 'package:qrcode/Akses/Model/listModel.dart';
 
 class ListService extends ChangeNotifier {
   List<ListModel> _data = [];
