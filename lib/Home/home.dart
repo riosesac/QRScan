@@ -20,12 +20,12 @@ class HomeDetail extends StatefulWidget {
 
 class _HomeDetailState extends State<HomeDetail> {
   String scanResult = '';
-  Future scanQR() async {
-    String cameraScan = await scanner.scan();
-    setState(() {
-      scanResult = cameraScan;
-    });
-  }
+  // Future scanQR() async {
+  //   String cameraScan = await scanner.scan();
+  //   setState(() {
+  //     scanResult = cameraScan;
+  //   });
+  // }
 
   // void initState() {
   //   scanQR();
@@ -51,10 +51,10 @@ class _HomeDetailState extends State<HomeDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        heroTag: "produk",
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Produk()),
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => Produks()),
           );
         },
         child: Icon(Icons.create_new_folder),
@@ -66,11 +66,13 @@ class _HomeDetailState extends State<HomeDetail> {
           children: <Widget>[
             scanResult == ''
                 ? FloatingActionButton.extended(
+                    heroTag: "scanner",
                     onPressed: scanQRSecond,
                     label: Text('This your link'),
-                    backgroundColor: Colors.blueGrey,
+                    backgroundColor: Colors.blueAccent,
                   )
                 : FloatingActionButton.extended(
+                    heroTag: "link",
                     onPressed: () => launchUrl(scanResult),
                     label: Text('Press to Link'),
                     icon: Icon(Icons.link),

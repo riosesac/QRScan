@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:qrcode/Akses/Service/listService.dart';
 import 'package:qrcode/Akses/Service/produkService.dart';
 import 'package:qrcode/Home/home.dart';
-import 'package:qrcode/Produk/produk.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => Home(),
-          '/produk': (context) => Produk(),
         },
       ),
     );
